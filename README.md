@@ -2,14 +2,14 @@
 
 ![Portfolio Banner](images/screenshot-hero.png)
 
-[![Website Status](https://img.shields.io/badge/Website-Live-brightgreen?style=for-the-badge&logo=netlify)](https://graceful-profiterole-beef38.netlify.app)
+[![Website Status](https://img.shields.io/badge/Website-Live-brightgreen?style=for-the-badge&logo=netlify)](https://datascience-portfolio-website.netlify.app/)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 A modern, responsive, and aesthetically pleasing portfolio website designed to showcase my Data Science projects and technical skills. Built with vanilla HTML, CSS, and JavaScript, focusing on clean code, smooth animations, and a premium dark mode experience.
 
-**🚀 Live Demo:** [https://graceful-profiterole-beef38.netlify.app](https://graceful-profiterole-beef38.netlify.app)
+**🚀 Live Demo:** [https://datascience-portfolio-website.netlify.app/](https://datascience-portfolio-website.netlify.app/)
 
 ## ✨ Features
 
