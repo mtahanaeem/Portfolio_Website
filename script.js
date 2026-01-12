@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Toggle Nav
         navLinks.classList.toggle('nav-active');
         menuToggle.classList.toggle('toggle');
-        
+
         // Animate Links
         navLinksItems.forEach((link, index) => {
             if (link.style.animation) {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         if (scrollTop > 100) {
             navbar.style.boxShadow = "0 10px 30px -10px rgba(2, 12, 27, 0.7)";
         } else {
@@ -66,16 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: "smooth"
@@ -99,4 +99,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(styleSheet);
+
+    // EmailJS Implementation
+    (function () {
+        // Initialize EmailJS with your Public Key
+        // REPLACE 'YOUR_PUBLIC_KEY' with your actual key from EmailJS dashboard
+        emailjs.init("SraZ69vHyq2x1DaYJ");
+    })();
+
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // These IDs must be replaced with your actual Service and Template IDs
+            const serviceID = 'service_8jcs2xo';
+            const templateID = 'template_u47vbjh';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                    alert('Message sent successfully!');
+                    contactForm.reset();
+                }, (err) => {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                    alert('Failed to send message. Please check console for details.');
+                    console.error('EmailJS Error:', err);
+                });
+        });
+    }
 });

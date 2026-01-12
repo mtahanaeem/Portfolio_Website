@@ -90,12 +90,18 @@ img {
     background-color: transparent;
     border: 1px solid var(--text-secondary);
     color: var(--text-primary);
-    margin-left: 15px;
 }
 
 .btn-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
+}
+
+.hero-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
 .section-header {
@@ -772,6 +778,10 @@ footer i {
 
     .hero-visual {
         width: 100%;
+    }
+
+    .hero-btns {
+        justify-content: center;
     }
 
     .about-content {
