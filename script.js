@@ -99,4 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(styleSheet);
+
+    // Email Button Clipboard Fallback
+    const emailBtn = document.querySelector('a[href^="mailto:"]');
+    if (emailBtn) {
+        emailBtn.addEventListener('click', function (e) {
+            const email = "muhamadtahanaeem.pro@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                // Optional: Show a subtle feedback
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Email Copied!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+    }
 });
