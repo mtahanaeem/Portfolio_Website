@@ -99,40 +99,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(styleSheet);
-
-    // EmailJS Implementation
-    (function () {
-        // Initialize EmailJS with your Public Key
-        // REPLACE 'YOUR_PUBLIC_KEY' with your actual key from EmailJS dashboard
-        emailjs.init("SraZ69vHyq2x1DaYJ");
-    })();
-
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            // These IDs must be replaced with your actual Service and Template IDs
-            const serviceID = 'service_8jcs2xo';
-            const templateID = 'template_u47vbjh';
-
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.disabled = false;
-                    alert('Message sent successfully!');
-                    contactForm.reset();
-                }, (err) => {
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.disabled = false;
-                    alert('Failed to send message. Please check console for details.');
-                    console.error('EmailJS Error:', err);
-                });
-        });
-    }
 });

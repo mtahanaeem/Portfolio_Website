@@ -742,6 +742,26 @@ section {
     width: fit-content;
 }
 
+.contact-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.contact-direct-btn {
+    width: 100%;
+    max-width: 300px;
+    margin-left: 0 !important;
+    text-align: center;
+    padding: 15px 25px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
 /* 
 ==============================================
    Footer
