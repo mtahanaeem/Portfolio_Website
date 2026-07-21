@@ -21,20 +21,40 @@ export default function About() {
         </motion.h2>
 
         <div className="grid md:grid-cols-5 gap-10 md:gap-16 items-center">
-          {/* Image — creative mask treatment */}
+          {/* Image — photo with morphing frame + floating animation */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="md:col-span-2 relative"
           >
-            <div className="relative w-56 h-56 md:w-64 md:h-64 mx-auto">
-              <div className="w-full h-full rounded-[30%_70%_40%_60%] bg-gradient-to-br from-magenta/30 to-cyan/30 animate-[morph_8s_ease-in-out_infinite] flex items-center justify-center">
-                <span className="text-6xl font-heading font-bold text-magenta/70">MT</span>
+            <motion.div
+              className="relative w-56 h-56 md:w-64 md:h-64 mx-auto"
+              animate={{
+                y: [0, -8, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <div className="w-full h-full rounded-[30%_70%_40%_60%] bg-gradient-to-br from-magenta/30 to-cyan/30 animate-[morph_8s_ease-in-out_infinite] overflow-hidden">
+                {about.image ? (
+                  <img
+                    src={about.image}
+                    alt="Muhammad Taha Naeem"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-6xl font-heading font-bold text-magenta/70">MT</span>
+                  </div>
+                )}
               </div>
-              {/* Decorative ring */}
+              {/* Decorative glow ring */}
               <div className="absolute -inset-4 rounded-[30%_70%_40%_60%] border border-magenta/20 -z-10 animate-[morph_8s_ease-in-out_infinite_1s]" />
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Bio */}

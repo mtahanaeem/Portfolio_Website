@@ -13,12 +13,14 @@ export const personal = {
   },
 };
 
+import profileImg from "../assets/profile.jpg";
+
 export const about = {
   bio: [
     "I'm a Data Science student in my final years, focused on the full pipeline — from messy raw data to models that hold up in production. My recent work spans churn prediction, opinion mining on business review data, and healthcare analytics dashboards, along with full-stack systems like an ERP for a small manufacturing business and a deals-aggregation platform. I care less about running a notebook once and more about building things that keep working.",
     "Outside of core ML/data work, I've also built with blockchain and enjoy projects that sit at the intersection of data engineering and product — dashboards people actually check, models that plug into real workflows. Based in Lahore, Pakistan, currently looking for opportunities in data science, analytics, or ML engineering.",
   ],
-  image: null, // set to import path when available
+  image: profileImg,
 };
 
 export const skills = [
