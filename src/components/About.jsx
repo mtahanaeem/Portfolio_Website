@@ -39,7 +39,25 @@ export default function About() {
                 ease: "easeInOut",
               }}
             >
-              <div className="w-full h-full rounded-[30%_70%_40%_60%] bg-gradient-to-br from-magenta/30 to-cyan/30 animate-[morph_8s_ease-in-out_infinite] overflow-hidden">
+              <motion.div
+                className="w-full h-full bg-gradient-to-br from-magenta/30 to-cyan/30 overflow-hidden"
+                animate={{
+                  borderRadius: [
+                    "30% 70% 40% 60%",
+                    "50% 50% 30% 70%",
+                    "40% 60% 60% 40%",
+                    "60% 40% 50% 50%",
+                    "35% 65% 45% 55%",
+                    "55% 45% 35% 65%",
+                    "30% 70% 40% 60%",
+                  ],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
                 {about.image ? (
                   <img
                     src={about.image}
@@ -51,9 +69,28 @@ export default function About() {
                     <span className="text-6xl font-heading font-bold text-magenta/70">MT</span>
                   </div>
                 )}
-              </div>
+              </motion.div>
               {/* Decorative glow ring */}
-              <div className="absolute -inset-4 rounded-[30%_70%_40%_60%] border border-magenta/20 -z-10 animate-[morph_8s_ease-in-out_infinite_1s]" />
+              <motion.div
+                className="absolute -inset-4 border border-magenta/20 -z-10"
+                animate={{
+                  borderRadius: [
+                    "30% 70% 40% 60%",
+                    "50% 50% 30% 70%",
+                    "40% 60% 60% 40%",
+                    "60% 40% 50% 50%",
+                    "35% 65% 45% 55%",
+                    "55% 45% 35% 65%",
+                    "30% 70% 40% 60%",
+                  ],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+              />
             </motion.div>
           </motion.div>
 
@@ -86,15 +123,6 @@ export default function About() {
           </motion.div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes morph {
-          0%, 100% { border-radius: 30% 70% 40% 60%; }
-          25% { border-radius: 50% 50% 30% 70%; }
-          50% { border-radius: 40% 60% 60% 40%; }
-          75% { border-radius: 60% 40% 50% 50%; }
-        }
-      `}</style>
     </section>
   );
 }

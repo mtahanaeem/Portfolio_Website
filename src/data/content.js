@@ -13,7 +13,7 @@ export const personal = {
   },
 };
 
-import profileImg from "../assets/profile.jpg";
+import profileImg from "../assets/profile.webp";
 
 export const about = {
   bio: [
