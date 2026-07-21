@@ -94,14 +94,14 @@ export default function Contact() {
             className="md:col-span-3 space-y-4"
           >
             <input type="hidden" name="form-name" value="contact" />
-            <input type="text" name="bot-field" style={{ display: "none" }} />
+            <input type="text" name="bot-field" autoComplete="off" style={{ display: "none" }} />
 
             <div className="grid grid-cols-2 gap-4">
               <input
                 type="text"
                 name="name"
                 placeholder="Your Name"
-                autocomplete="name"
+                autoComplete="name"
                 required
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-text-secondary/50 text-sm font-body focus:outline-none focus:border-magenta/50 transition-colors"
               />
@@ -109,7 +109,7 @@ export default function Contact() {
                 type="email"
                 name="email"
                 placeholder="Your Email"
-                autocomplete="email"
+                autoComplete="email"
                 required
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-text-secondary/50 text-sm font-body focus:outline-none focus:border-magenta/50 transition-colors"
               />
@@ -118,7 +118,7 @@ export default function Contact() {
               name="message"
               rows={4}
               placeholder="Your Message"
-              autocomplete="off"
+              autoComplete="off"
               required
               className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-text-secondary/50 text-sm font-body focus:outline-none focus:border-magenta/50 transition-colors resize-none"
             />
