@@ -101,6 +101,7 @@ export default function Contact() {
                 type="text"
                 name="name"
                 placeholder="Your Name"
+                autocomplete="name"
                 required
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-text-secondary/50 text-sm font-body focus:outline-none focus:border-magenta/50 transition-colors"
               />
@@ -108,6 +109,7 @@ export default function Contact() {
                 type="email"
                 name="email"
                 placeholder="Your Email"
+                autocomplete="email"
                 required
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-text-secondary/50 text-sm font-body focus:outline-none focus:border-magenta/50 transition-colors"
               />
@@ -116,6 +118,7 @@ export default function Contact() {
               name="message"
               rows={4}
               placeholder="Your Message"
+              autocomplete="off"
               required
               className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-text-secondary/50 text-sm font-body focus:outline-none focus:border-magenta/50 transition-colors resize-none"
             />
