@@ -33,18 +33,13 @@ export default function Hero() {
         >
           {personal.location}
         </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight"
-        >
+        <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight">
           {personal.name.split(" ").map((word, i) => (
             <span key={i} className={i === personal.name.split(" ").length - 1 ? "text-magenta" : "text-text-primary"}>
               {word}{" "}
             </span>
           ))}
-        </motion.h1>
+        </h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
