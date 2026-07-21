@@ -1,11 +1,31 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
 import { personal } from "../data/content";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { GithubIcon, LinkedinIcon, GlobeIcon } from "./icons";
 
 export default function Contact() {
   const [ref, inView] = useInView();
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    const form = e.target;
+    const formData = new FormData(form);
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
+  };
 
   return (
     <section id="contact" className="relative py-24 md:py-32 overflow-hidden">
@@ -70,14 +90,11 @@ export default function Contact() {
             method="POST"
             data-netlify="true"
             netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
             className="md:col-span-3 space-y-4"
           >
             <input type="hidden" name="form-name" value="contact" />
-            <p hidden>
-              <label>
-                Don't fill this out: <input name="bot-field" />
-              </label>
-            </p>
+            <input type="text" name="bot-field" style={{ display: "none" }} />
 
             <div className="grid grid-cols-2 gap-4">
               <input
@@ -104,10 +121,34 @@ export default function Contact() {
             />
             <button
               type="submit"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan text-navy font-semibold font-body text-sm hover:bg-cyan/90 transition-all hover:scale-105"
+              disabled={status === "loading"}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan text-navy font-semibold font-body text-sm hover:bg-cyan/90 transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Send size={15} /> Send Message
+              {status === "loading" ? (
+                <>Sending...</>
+              ) : (
+                <><Send size={15} /> Send Message</>
+              )}
             </button>
+
+            {status === "success" && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 text-sm text-green-400"
+              >
+                <CheckCircle size={15} /> Message sent — I'll get back to you soon!
+              </motion.p>
+            )}
+            {status === "error" && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 text-sm text-red-400"
+              >
+                <AlertCircle size={15} /> Something went wrong. Please try emailing me directly.
+              </motion.p>
+            )}
           </motion.form>
         </div>
       </div>
