@@ -21,15 +21,15 @@ export default function About() {
         </motion.h2>
 
         <div className="grid md:grid-cols-5 gap-10 md:gap-16 items-center">
-          {/* Image — photo with morphing blob frame + floating as one unit */}
+          {/* Image — outer ring + inner photo blob, animated in perfect sync */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-2"
+            className="md:col-span-2 flex items-center justify-center"
           >
             <motion.div
-              className="relative w-56 h-56 md:w-64 md:h-64 mx-auto"
+              className="p-4"
               animate={{
                 y: [0, -8, 0],
                 borderRadius: [
@@ -47,22 +47,46 @@ export default function About() {
                 borderRadius: { duration: 12, repeat: Infinity, ease: "easeInOut" },
               }}
               style={{
-                border: "1.5px solid rgba(217, 70, 239, 0.2)",
-                overflow: "hidden",
-                background: "linear-gradient(135deg, rgba(217, 70, 239, 0.3), rgba(6, 182, 212, 0.3))",
+                border: "2px solid rgba(217, 70, 239, 0.25)",
+                boxShadow: "0 0 24px rgba(217, 70, 239, 0.08)",
               }}
             >
-              {about.image ? (
-                <img
-                  src={about.image}
-                  alt="Muhammad Taha Naeem"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-700"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-6xl font-heading font-bold text-magenta/70">MT</span>
-                </div>
-              )}
+              <motion.div
+                className="w-56 h-56 md:w-64 md:h-64"
+                animate={{
+                  y: [0, -8, 0],
+                  borderRadius: [
+                    "30% 70% 40% 60%",
+                    "50% 50% 30% 70%",
+                    "40% 60% 60% 40%",
+                    "60% 40% 50% 50%",
+                    "35% 65% 45% 55%",
+                    "55% 45% 35% 65%",
+                    "30% 70% 40% 60%",
+                  ],
+                }}
+                transition={{
+                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                  borderRadius: { duration: 12, repeat: Infinity, ease: "easeInOut" },
+                }}
+                style={{
+                  border: "1.5px solid rgba(217, 70, 239, 0.2)",
+                  overflow: "hidden",
+                  background: "linear-gradient(135deg, rgba(217, 70, 239, 0.3), rgba(6, 182, 212, 0.3))",
+                }}
+              >
+                {about.image ? (
+                  <img
+                    src={about.image}
+                    alt="Muhammad Taha Naeem"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-6xl font-heading font-bold text-magenta/70">MT</span>
+                  </div>
+                )}
+              </motion.div>
             </motion.div>
           </motion.div>
 
